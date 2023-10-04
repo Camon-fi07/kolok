@@ -36,5 +36,6 @@ userQuestion.addEventListener("input", (event) => {
 });
 
 list.addEventListener("click", (event) => {
-  navigator.clipboard.writeText(event.target.textContent);
+  const text = event.target.parentElement.querySelector("span").textContent;
+  navigator.clipboard.writeText(text);
 });
