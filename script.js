@@ -23,19 +23,22 @@ const userQuestion = document.getElementById("userQuestion");
 const list = document.getElementsByClassName("answers")[0];
 const asnwerItems = document.getElementsByClassName("answers__item");
 
-userQuestion.addEventListener("input", (event) => {
+userQuestion.addEventListener("input", () => {
   list.replaceChildren();
   const results = fuse.search(userQuestion.value);
   results.length = 5;
   results.forEach((element) => {
     list.insertAdjacentHTML(
       "beforeend",
-      `<li class = 'answers__item'><h2>${element.item.question}</h2><span>${element.item.answer}</span></li>`
+      `<li class = 'answers__item'>
+        <h2>${element.item.question}</h2>
+        <span>${element.item.question_number} \n ${element.item.answer}</span>
+      </li>`
     );
   });
 });
 
 list.addEventListener("click", (event) => {
-  const text = event.target.parentElement.querySelector("span").textContent;
-  navigator.clipboard.writeText(text);
+  const answer = event.target.parentElement.querySelector("span").textContent;
+  navigator.clipboard.writeText(answer);
 });
