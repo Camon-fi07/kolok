@@ -32,7 +32,10 @@ userQuestion.addEventListener("input", () => {
       "beforeend",
       `<li class = 'answers__item'>
         <h2>${element.item.question}</h2>
-        <span>${element.item.question_number}\n${element.item.answer}</span>
+        <span>${element.item.question_number}\n${element.item.answer.replaceAll(
+        "\n",
+        "<br/>"
+      )}</span>
       </li>`
     );
   });
@@ -41,7 +44,9 @@ userQuestion.addEventListener("input", () => {
 list.addEventListener("click", (event) => {
   const answer = `${
     event.target.parentElement.querySelector("h2").textContent
-  }\n${event.target.parentElement.querySelector("span").textContent}`;
+  }\n${event.target.parentElement
+    .querySelector("span")
+    .innerHTML.replaceAll("<br>", "\n")}`;
 
   navigator.clipboard.writeText(answer);
 });
