@@ -30,12 +30,11 @@ userQuestion.addEventListener("input", () => {
   results.forEach((element) => {
     list.insertAdjacentHTML(
       "beforeend",
-      `<li class = 'answers__item'>
-        <h2>${element.item.question}</h2>
-        <span>${element.item.question_number}\n${element.item.answer.replaceAll(
-        "\n",
-        "<br/>"
-      )}</span>
+      `
+      <li class = 'answers__item'>
+        <h2>${element.item.question_number} ${element.item.question}</h2>
+        
+        <span>${element.item.answer.replaceAll("\n", "<br/>")}</span>
       </li>`
     );
   });
