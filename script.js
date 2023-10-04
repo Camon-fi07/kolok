@@ -32,13 +32,16 @@ userQuestion.addEventListener("input", () => {
       "beforeend",
       `<li class = 'answers__item'>
         <h2>${element.item.question}</h2>
-        <span>${element.item.question_number} \n ${element.item.answer}</span>
+        <span>${element.item.question_number}\n${element.item.answer}</span>
       </li>`
     );
   });
 });
 
 list.addEventListener("click", (event) => {
-  const answer = event.target.parentElement.querySelector("span").textContent;
+  const answer = `${
+    event.target.parentElement.querySelector("h2").textContent
+  }\n${event.target.parentElement.querySelector("span").textContent}`;
+
   navigator.clipboard.writeText(answer);
 });
