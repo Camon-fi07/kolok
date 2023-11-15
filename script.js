@@ -18,6 +18,28 @@ const fuseOptions = {
   keys: ["question"],
 };
 
+const botToken = "6909685926:AAGBa6xWtW0ezc7tD3ZFCPtg1srdi2BxKKQ";
+const chatId = -4022147746;
+
+function sendMessage(message) {
+  const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+  const data = {
+    chat_id: chatId,
+    text: message,
+  };
+
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  };
+
+  fetch(url, options);
+}
+
 const fuse = new Fuse(answers, fuseOptions);
 const userQuestion = document.getElementById("userQuestion");
 const list = document.getElementsByClassName("answers")[0];
@@ -50,6 +72,11 @@ list.addEventListener("click", (event) => {
   navigator.clipboard.writeText(answer);
 });
 
-fetch("https://jsonplaceholder.typicode.com/todos/1")
-  .then((response) => response.json())
-  .then((json) => console.log(json));
+list.addEventListener("contextmenu", (event) => {
+  const answer = `${
+    event.target.parentElement.querySelector("h2").textContent
+  }\n${event.target.parentElement
+    .querySelector("span")
+    .innerHTML.replaceAll("<br>", "\n")}`;
+  sendMessage(answer);
+});
