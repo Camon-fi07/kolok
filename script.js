@@ -18,8 +18,11 @@ const fuseOptions = {
   keys: ["question"],
 };
 
-const botToken = process.env.BOT_TOKEN;
-const chatId = process.env.CHAT_ID;
+const botToken = "6909685926:AAGBa6xWtW0ezc7tD3ZFCPtg1srdi2BxKKQ";
+const chatId = -4022147746;
+
+// const botToken = process.env.BOT_TOKEN;
+// const chatId = process.env.CHAT_ID;
 
 function sendMessage(message) {
   const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
