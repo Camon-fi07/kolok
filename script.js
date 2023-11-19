@@ -71,11 +71,15 @@ list.addEventListener("click", (event) => {
   navigator.clipboard.writeText(answer);
 });
 
-list.addEventListener("contextmenu", (event) => {
-  const answer = `${
-    event.target.parentElement.querySelector("h2").textContent
-  }\n${event.target.parentElement
-    .querySelector("span")
-    .innerHTML.replaceAll("<br>", "\n")}`;
-  sendMessage(answer);
+list.addEventListener("mouseup", (event) => {
+  if (event.button === 1) {
+    const answer = `${
+      event.target.parentElement.querySelector("h2").textContent
+    }\n${event.target.parentElement
+      .querySelector("span")
+      .innerHTML.replaceAll("<br>", "\n")}`;
+
+    sendMessage(answer);
+  }
 });
+
