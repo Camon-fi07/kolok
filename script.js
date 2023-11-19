@@ -1,6 +1,5 @@
 import Fuse from "https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.esm.js";
 import answers from "./answers_json.json" assert { type: "json" };
-require("dotenv").config();
 const fuseOptions = {
   // isCaseSensitive: false,
   includeScore: true,
@@ -20,9 +19,6 @@ const fuseOptions = {
 
 const botToken = "6909685926:AAGBa6xWtW0ezc7tD3ZFCPtg1srdi2BxKKQ";
 const chatId = -4022147746;
-
-// const botToken = process.env.BOT_TOKEN;
-// const chatId = process.env.CHAT_ID;
 
 function sendMessage(message) {
   const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
