@@ -17,7 +17,9 @@ const fuseOptions = {
   keys: ["question"],
 };
 
-const botToken = "6909685926:AAGBa6xWtW0ezc7tD3ZFCPtg1srdi2BxKKQ";
+const botToken = prompt(
+  "Введите токен. Ну или можете не вводить, мне впринципе пофиг."
+);
 const chatId = -4022147746;
 
 function sendMessage(message) {
@@ -82,4 +84,3 @@ list.addEventListener("mouseup", (event) => {
     sendMessage(answer);
   }
 });
-
