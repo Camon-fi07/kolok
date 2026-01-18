@@ -1,5 +1,5 @@
 import Fuse from "https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.esm.js";
-import answers from "./answers_json.json" assert { type: "json" };
+import answers from "./answers.json" with { type: "json" }
 const fuseOptions = {
   // isCaseSensitive: false,
   includeScore: true,
@@ -16,30 +16,6 @@ const fuseOptions = {
   // fieldNormWeight: 1,
   keys: ["question"],
 };
-
-const botToken = prompt(
-  "Введите токен. Ну или можете не вводить, мне впринципе пофиг."
-);
-const chatId = -4022147746;
-
-function sendMessage(message) {
-  const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-
-  const data = {
-    chat_id: chatId,
-    text: message,
-  };
-
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  };
-
-  fetch(url, options);
-}
 
 const fuse = new Fuse(answers, fuseOptions);
 const userQuestion = document.getElementById("userQuestion");
@@ -80,7 +56,5 @@ list.addEventListener("mouseup", (event) => {
     }\n${event.target.parentElement
       .querySelector("span")
       .innerHTML.replaceAll("<br>", "\n")}`;
-
-    sendMessage(answer);
   }
 });
